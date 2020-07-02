@@ -8,7 +8,6 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-// import HelloWorld from "./components/HelloWorld.vue";
 import Currencies from "./components/Currencies.vue";
 
 @Component({
