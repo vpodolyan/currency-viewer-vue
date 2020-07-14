@@ -1,7 +1,5 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <!-- <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" /> -->
     <Currencies />
   </div>
 </template>
@@ -19,8 +17,12 @@ export default class App extends Vue {}
 </script>
 
 <style>
+body {
+  background: rgb(110, 139, 101);
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Ubuntu, Calibri, Verdana, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

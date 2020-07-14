@@ -1,6 +1,11 @@
 <template>
-  <div>
-    <Currency v-for="(rate, index) in rates" v-bind:value="rate" :key="index" />
+  <div class="grid">
+    <Currency
+      v-for="(rate, symbol, index) in rates"
+      v-bind:value="rate"
+      v-bind:symbol="symbol"
+      :key="index"
+    />
   </div>
 </template>
 
@@ -28,4 +33,25 @@ export default class Currencies extends Vue {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  grid-gap: 2vw;
+  grid-auto-rows: 1fr;
+}
+
+.grid::before {
+  content: "";
+  width: 0;
+  padding-bottom: 100%;
+  grid-row: 1 / 1;
+  grid-column: 1 / 1;
+}
+
+/** Hack to hide fisrt empty column */
+.grid > *:first-child {
+  grid-row: 1 / 1;
+  grid-column: 1 / 1;
+}
+</style>
