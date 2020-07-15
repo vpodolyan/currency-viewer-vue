@@ -1,34 +1,51 @@
 <template>
-  <div class="grid">
-    <Currency
-      v-for="(rate, symbol, index) in rates"
-      v-bind:value="rate"
-      v-bind:symbol="symbol"
-      :key="index"
-    />
+  <div>
+    <BaseCurrency v-bind:symbol="base" v-on:base-change="onBaseChange" />
+    <div class="grid">
+      <Currency
+        v-for="(rate, symbol, index) in rates"
+        v-bind:value="rate"
+        v-bind:symbol="symbol"
+        :key="index"
+      />
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 
+import BaseCurrency from "./BaseCurrency.vue";
 import Currency from "./Currency.vue";
 
 @Component({
   components: {
+    BaseCurrency,
     Currency
   }
 })
 export default class Currencies extends Vue {
   private rates: Array<{ [currency: string]: number }> = [];
-  private symbols: string[] = ["USD", "GBP"];
+  private symbols: string[] = ["USD", "GBP", "RUB"];
+  private base = "EUR";
 
   mounted() {
+    this.getCurrencies();
+  }
+
+  getCurrencies() {
     fetch(
-      `https://api.exchangeratesapi.io/latest?symbols=${this.symbols.join()}`
+      `https://api.exchangeratesapi.io/latest?base=${
+        this.base
+      }&symbols=${this.symbols.join()}`
     )
       .then(stream => stream.json())
       .then(data => (this.rates = data.rates));
+  }
+
+  onBaseChange(value: "EUR" | "USD") {
+    this.base = value;
+    this.getCurrencies();
   }
 }
 </script>

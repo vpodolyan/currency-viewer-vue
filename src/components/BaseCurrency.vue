@@ -1,16 +1,18 @@
 <template lang="pug">
-    div.wrapper.card
-      div {{Number(value).toFixed(3)}}
-        span.symbol {{symbol}}
+    div.card.wrapper(v-on:click="toggleBase")
+        div.symbol {{symbol}}
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component
-export default class Currencies extends Vue {
-  @Prop() value!: string;
+export default class BaseCurrency extends Vue {
   @Prop() symbol!: string;
+
+  toggleBase() {
+    this.$emit("base-change", this.$props.symbol === "USD" ? "EUR" : "USD");
+  }
 }
 </script>
 
@@ -19,7 +21,12 @@ export default class Currencies extends Vue {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 2vw;
+  width: 8rem;
+  height: 4rem;
+}
+
+.wrapper:hover {
+  cursor: pointer;
 }
 
 .symbol {
