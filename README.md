@@ -1,5 +1,7 @@
 # currency-viewer-vue
 
+Project is based on Vue CLI generated template.
+
 ## Project setup
 ```
 yarn install
