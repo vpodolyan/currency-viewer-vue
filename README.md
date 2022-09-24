@@ -3,8 +3,17 @@
 Project is based on Vue CLI generated template.
 
 ## Project setup
+In order to fetch currency rates, please create `.env.local` file in the project root with your ApiLayer key for [Exchanges Rates Data API](https://apilayer.com/marketplace/exchangerates_data-api):
 ```
-yarn install
+// .env.local
+
+VUE_APP_API_KEY=your_api_key
+```
+
+Then please run
+
+```
+yarn
 ```
 
 ### Compiles and hot-reloads for development

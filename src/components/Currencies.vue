@@ -34,10 +34,14 @@ export default class Currencies extends Vue {
   }
 
   getCurrencies() {
+    const headers = new Headers();
+    headers.append("apikey", process.env.VUE_APP_API_KEY);
+
     fetch(
-      `https://api.exchangeratesapi.io/latest?base=${
+      `https://api.apilayer.com/exchangerates_data/latest?base=${
         this.base
-      }&symbols=${this.symbols.join()}`
+      }&symbols=${this.symbols.join()}`,
+      { headers }
     )
       .then(stream => stream.json())
       .then(data => (this.rates = data.rates));
