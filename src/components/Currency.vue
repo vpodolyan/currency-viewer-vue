@@ -1,7 +1,7 @@
 <template lang="pug">
-    div.wrapper.card
-      div {{Number(value).toFixed(3)}}
-        span.symbol {{symbol}}
+div(v-if="symbol !== base").wrapper.card
+  div {{Number(value).toFixed(3)}}
+    span.symbol {{symbol}}
 </template>
 
 <script lang="ts">
@@ -11,6 +11,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 export default class Currencies extends Vue {
   @Prop() value!: string;
   @Prop() symbol!: string;
+  @Prop() base!: string;
 }
 </script>
 

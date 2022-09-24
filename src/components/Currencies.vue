@@ -6,6 +6,7 @@
         v-for="(rate, symbol, index) in rates"
         v-bind:value="rate"
         v-bind:symbol="symbol"
+        v-bind:base="base"
         :key="index"
       />
     </div>
@@ -13,6 +14,7 @@
 </template>
 
 <script lang="ts">
+import { logError } from "@/utils/logError";
 import { Component, Vue } from "vue-property-decorator";
 
 import BaseCurrency from "./BaseCurrency.vue";
@@ -26,7 +28,7 @@ import Currency from "./Currency.vue";
 })
 export default class Currencies extends Vue {
   private rates: Array<{ [currency: string]: number }> = [];
-  private symbols: string[] = ["USD", "GBP", "RUB"];
+  private symbols: string[] = ["USD", "EUR", "GBP", "RUB"];
   private base = "EUR";
 
   mounted() {
@@ -44,7 +46,8 @@ export default class Currencies extends Vue {
       { headers }
     )
       .then(stream => stream.json())
-      .then(data => (this.rates = data.rates));
+      .then(data => (this.rates = data.rates))
+      .catch(logError);
   }
 
   onBaseChange(value: "EUR" | "USD") {
