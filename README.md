@@ -1,5 +1,9 @@
 # currency-viewer-vue
 
+Currency viewer web app writted using Vue.
+
+Demo: http://vladimirpodolian.com/currency-viewer-vue/
+
 Project is based on Vue CLI generated template.
 
 ## Project setup
