@@ -3,9 +3,9 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Build
+    env:
+      VUE_APP_API_KEY: ${{ secrets.VUE_APP_API_KEY }}
     steps:
-
     - name: Checkout
       uses: actions/checkout@v2
 
@@ -16,5 +16,3 @@ jobs:
         reponame: 'currency-viewer-vue'
         useyarn: true
         token: ${{ secrets.GITHUB_TOKEN }}
-      env:
-        VUE_APP_API_KEY: ${{ secrets.VUE_APP_API_KEY }}
