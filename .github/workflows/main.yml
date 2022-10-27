@@ -1,12 +1,18 @@
-name: Build on Github Pages
+name: Build for Github Pages
 on: [push]
 jobs:
-  build_vue:
+  build:
     runs-on: ubuntu-latest
     name: Build
     steps:
-    - uses: actions/checkout@v2
-    - id: Build-Vue
+    - name: Checkout
+      uses: actions/checkout@v2
+      
+    - name: Env
+      env:
+        VUE_APP_API_KEY: ${{ secrets.VUE_APP_API_KEY }}
+
+    - name: Build & copy to gh-pages branch
       uses: xRealNeon/VuePagesAction@1.0.1
       with:
         username: 'vpodolyan'
