@@ -11,4 +11,5 @@ jobs:
       with:
         username: 'vpodolyan'
         reponame: 'currency-viewer-vue'
+        useyarn: true
         token: ${{ secrets.GITHUB_TOKEN }}
