@@ -28,7 +28,7 @@ import Currency from "./Currency.vue";
 })
 export default class Currencies extends Vue {
   private rates: Array<{ [currency: string]: number }> = [];
-  private symbols: string[] = ["USD", "EUR", "GBP", "RUB", "THB", "TRY"];
+  private symbols: string[] = ["USD", "EUR", "GBP", "RUB", "THB", "TRY", "HKD"];
   private base = "USD";
 
   mounted() {
