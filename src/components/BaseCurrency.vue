@@ -1,6 +1,6 @@
 <template lang="pug">
-    div.card.wrapper(v-on:click="toggleBase")
-        div.symbol {{symbol}}
+div.card.wrapper(v-on:click="toggleBase")
+  div.symbol {{symbol}}
 </template>
 
 <script lang="ts">
