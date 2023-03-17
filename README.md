@@ -1,6 +1,6 @@
 # currency-viewer-vue
 
-Currency viewer web app written using Vue.
+Currency viewer web app written in Vue.
 
 Demo: http://vladimirpodolian.com/currency-viewer-vue/
 
