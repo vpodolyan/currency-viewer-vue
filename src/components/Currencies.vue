@@ -28,7 +28,7 @@ import Currency from "./Currency.vue";
 })
 export default class Currencies extends Vue {
   private rates: Array<{ [currency: string]: number }> = [];
-  private symbols: string[] = ["USD", "EUR", "GBP", "RUB", "THB", "TRY", "HKD"];
+  private symbols: string[] = ["USD", "EUR", "GBP", "RUB", "THB", "TRY", "HKD", "ARS"];
   private base = "USD";
 
   mounted() {
@@ -73,7 +73,7 @@ export default class Currencies extends Vue {
   grid-column: 1 / 1;
 }
 
-/** Hack to hide fisrt empty column */
+/** Hack to hide first empty column */
 .grid > *:first-child {
   grid-row: 1 / 1;
   grid-column: 1 / 1;
